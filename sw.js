@@ -1,7 +1,7 @@
 // Служебный скрипт «Орбиты»: приложение открывается и без интернета.
 // Страница — сначала из сети (чтобы получать обновления), при ошибке — из кэша.
 // Остальные файлы (скрипты, стили, иконки) — из кэша, если они там есть.
-const CACHE = 'orbita-v1';
+const CACHE = 'orbita-v2';
 const CORE = ['./', './index.html', './manifest.webmanifest', './favicon.svg', './icons/icon-192.png', './icons/icon-512.png'];
 
 self.addEventListener('install', (event) => {
