@@ -1,8 +1,8 @@
 // Служебный скрипт «Орбиты»: приложение открывается и без интернета.
 // Страница — сначала из сети (чтобы получать обновления), при ошибке — из кэша.
 // Остальные файлы (скрипты, стили, иконки) — из кэша, если они там есть.
-const CACHE = 'orbita-v2';
-const CORE = ['./', './index.html', './manifest.webmanifest', './favicon.svg', './icons/icon-192.png', './icons/icon-512.png'];
+const CACHE = 'orbita-v3';
+const CORE = ['./', './index.html', './manifest.webmanifest', './favicon.svg', './icons/orbita2-192.png', './icons/orbita2-512.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -65,8 +65,8 @@ self.addEventListener('push', (event) => {
   event.waitUntil(
     self.registration.showNotification(msg.title, {
       body: msg.body,
-      icon: './icons/icon-192.png',
-      badge: './icons/icon-192.png',
+      icon: './icons/orbita2-192.png',
+      badge: './icons/orbita2-192.png',
       tag: 'orbita',
       renotify: true,
     }),
