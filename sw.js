@@ -56,7 +56,7 @@ self.addEventListener('fetch', (event) => {
 
 // ——— push-уведомления (приходят, даже когда приложение закрыто) ———
 self.addEventListener('push', (event) => {
-  let msg = { title: 'Орбита', body: '' };
+  let msg = { title: 'Orbita', body: '' };
   try {
     msg = { ...msg, ...event.data.json() };
   } catch {
