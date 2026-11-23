@@ -53,3 +53,33 @@ self.addEventListener('fetch', (event) => {
     ),
   );
 });
+
+// ——— push-уведомления (приходят, даже когда приложение закрыто) ———
+self.addEventListener('push', (event) => {
+  let msg = { title: 'Орбита', body: '' };
+  try {
+    msg = { ...msg, ...event.data.json() };
+  } catch {
+    if (event.data) msg.body = event.data.text();
+  }
+  event.waitUntil(
+    self.registration.showNotification(msg.title, {
+      body: msg.body,
+      icon: './icons/icon-192.png',
+      badge: './icons/icon-192.png',
+      tag: 'orbita',
+      renotify: true,
+    }),
+  );
+});
+
+// нажатие на уведомление — открыть приложение (или переключиться на открытое)
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((list) => {
+      for (const c of list) if ('focus' in c) return c.focus();
+      return self.clients.openWindow('./');
+    }),
+  );
+});
